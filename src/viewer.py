@@ -84,7 +84,7 @@ def main():
     color_shader = Shader(shaders_dir + "color.vert", shaders_dir + "color.frag")
 
     target = Cylinder(color_shader)
-    target_transform = translate((0, 1.3, 0)) @ scale((1, 1, 1)) @ rotate(radians(90.0), (0, 1, 0))
+    target_transform = translate((0, 1.3, 0)) @ scale((1, 1, 1)) @ rotate(radians(90.0), (0, 1, 1))
     target_node = Node(transform=target_transform)
     target_node.add(target)
 
