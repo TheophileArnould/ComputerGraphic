@@ -3,6 +3,8 @@ import OpenGL.GL as GL
 
 from shape import Shape
 
+
+
 class Cylinder(Shape):
     def __init__(self, shader, height=1.0, radius=0.5, slices=16):
         super().__init__(shader)
@@ -53,9 +55,11 @@ class Cylinder(Shape):
         self.num_indices = len(indices)
 
     def draw(self, model, view, projection):
+        
         GL.glUseProgram(self.shader.glid)
         GL.glBindVertexArray(self.glid)
 
         super().draw(model, view, projection)
 
         GL.glDrawElements(GL.GL_TRIANGLE_STRIP, self.num_indices, GL.GL_UNSIGNED_INT, None)
+

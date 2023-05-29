@@ -13,8 +13,7 @@ from numpy import array
 from shader import Shader
 from node import Node
 from cylinder import Cylinder
-from pyramid import Pyramid
-from triangle import Triangle
+from target import Target
 
 
 class Viewer:
@@ -83,8 +82,8 @@ def main():
     shaders_dir = str(pathlib.Path().parent.absolute()) + "/shaders/"
     color_shader = Shader(shaders_dir + "color.vert", shaders_dir + "color.frag")
 
-    target = Cylinder(color_shader)
-    target_transform = translate((0, 1.3, 0)) @ scale((1, 1, 1)) @ rotate(radians(90.0), (0, 1, 1))
+    target = Target(color_shader)
+    target_transform = scale((1, 1, 0.05))
     target_node = Node(transform=target_transform)
     target_node.add(target)
 
