@@ -14,6 +14,7 @@ from shader import Shader
 from node import Node
 from cylinder import Cylinder
 from target import Target
+#from arrow import Arrow
 
 
 class Viewer:
@@ -28,12 +29,16 @@ class Viewer:
         glfw.window_hint(glfw.OPENGL_PROFILE, glfw.OPENGL_CORE_PROFILE)
         glfw.window_hint(glfw.RESIZABLE, False)
         self.win = glfw.create_window(width, height, 'Viewer', None, None)
+        #TEST POUR PLUS TARD
+        self.view = None
+        self.projection = None
 
         # make win's OpenGL context current; no OpenGL calls can happen before
         glfw.make_context_current(self.win)
 
         # register event handlers
         glfw.set_key_callback(self.win, self.on_key)
+        glfw.set_mouse_button_callback(self.win, self.mouse_button_callback)
 
         # useful message to check OpenGL renderer characteristics
         print('OpenGL', GL.glGetString(GL.GL_VERSION).decode() + ', GLSL',
@@ -42,9 +47,8 @@ class Viewer:
 
         # initialize GL by setting viewport and default render characteristics
         GL.glClearColor(0.1, 0.1, 0.1, 0.1)
-
         self.scene_root = Node()
-
+        
     def run(self):
         """ Main render loop for this OpenGL window """
         while not glfw.window_should_close(self.win):
@@ -57,8 +61,10 @@ class Viewer:
             tra_mat = translate(vec3(0, 0, -4))
             sca_mat = identity(mat4)
             view =  array(tra_mat @ rot_mat @ sca_mat)
+            self.view = view
 
             projection = array(perspective(45, 1, 0, 10))
+            self.projection = projection
 
             self.scene_root.draw(model, view, projection)
 
@@ -73,6 +79,25 @@ class Viewer:
         if action == glfw.PRESS or action == glfw.REPEAT:
             if key == glfw.KEY_ESCAPE or key == glfw.KEY_Q:
                 glfw.set_window_should_close(self.win, True)
+    
+    def mouse_button_callback(self, window, button, action, mods):
+        # Vérifiez si le bouton de la souris est le bouton gauche et s'il a été pressé
+        if ((action == glfw.PRESS) and (button == glfw.MOUSE_BUTTON_LEFT)):
+            # Obtenez les coordonnées de la souris
+            x, y = glfw.get_cursor_pos(window)
+            self.generate_cylinder(x, y)
+
+    def generate_cylinder(self, x, y):
+        shaders_dir = str(pathlib.Path().parent.absolute()) + "/shaders/"
+        # Créez une instance de Cylinder avec le shader approprié et les paramètres souhaités
+        color_shader = Shader(shaders_dir + "color.vert", shaders_dir + "color.frag")
+        cylinder = Cylinder(color_shader, height=1.0, radius=0.5, slices=16)
+        # Appliquez une transformation de translation pour positionner le cylindre aux coordonnées (x, y)
+        translation_matrix = translate(vec3(x, y, 0.0))
+        translation_array = translation_matrix.to_list()  # Convert the matrix to a list
+        # Appelez la méthode draw de l'instance de Cylinder en passant les matrices de transformation appropriées
+        cylinder.draw(array(translation_array), self.view, self.projection)
+        print("(x, y) = ",x, y)
 
 
 # -------------- main program and scene setup --------------------------------
@@ -87,8 +112,13 @@ def main():
     target_node = Node(transform=target_transform)
     target_node.add(target)
 
+    #cylindre = Cylinder(color_shader, height=0.8, radius=0.05)
+    #cylindre_transform = translate((0, 0.5, 0))
+    #cylindre_node = Node(transform=cylindre_transform)
+    #cylindre_node.add(cylindre)
     # Add the root node to the scene
     viewer.scene_root.add(target_node)
+    #viewer.scene_root.add(cylindre)
 
     # start the rendering loop
     viewer.run()
