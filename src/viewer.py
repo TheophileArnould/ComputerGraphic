@@ -51,6 +51,20 @@ class Viewer:
         
     def run(self):
         """ Main render loop for this OpenGL window """
+        shaders_dir = str(pathlib.Path().parent.absolute()) + "/shaders/"
+        color_shader = Shader(shaders_dir + "color.vert", shaders_dir + "color.frag")
+
+        target = Target(color_shader)
+        target_transform = scale((1, 1, 0.05))
+        target_node = Node(transform=target_transform)
+        target_node.add(target)
+
+        #cylindre = Cylinder(color_shader, height=0.8, radius=0.05)
+        #cylindre_transform = translate((0, 0.5, 0))
+        #cylindre_node = Node(transform=cylindre_transform)
+        #cylindre_node.add(cylindre)
+        # Add the root node to the scene
+        self.scene_root.add(target_node)
         while not glfw.window_should_close(self.win):
             # clear draw buffer
             GL.glClear(GL.GL_COLOR_BUFFER_BIT)
@@ -104,23 +118,6 @@ class Viewer:
 def main():
     """ create window, add shaders & scene objects, then run rendering loop """
     viewer = Viewer()
-    shaders_dir = str(pathlib.Path().parent.absolute()) + "/shaders/"
-    color_shader = Shader(shaders_dir + "color.vert", shaders_dir + "color.frag")
-
-    target = Target(color_shader)
-    target_transform = scale((1, 1, 0.05))
-    target_node = Node(transform=target_transform)
-    target_node.add(target)
-
-    #cylindre = Cylinder(color_shader, height=0.8, radius=0.05)
-    #cylindre_transform = translate((0, 0.5, 0))
-    #cylindre_node = Node(transform=cylindre_transform)
-    #cylindre_node.add(cylindre)
-    # Add the root node to the scene
-    viewer.scene_root.add(target_node)
-    #viewer.scene_root.add(cylindre)
-
-    # start the rendering loop
     viewer.run()
 
 

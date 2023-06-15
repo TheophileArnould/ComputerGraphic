@@ -1,4 +1,4 @@
 PyOpenGL
 glfw
 numpy
-PyGLM
+PyGLM  #pip3 install -r requirements.txt

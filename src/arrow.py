@@ -6,7 +6,7 @@ class Arrow(Cylinder):
     #Variable statique
     shaders_dir = str(pathlib.Path().parent.absolute()) + "/shaders/"
     color_shader = Shader(shaders_dir + "color.vert", shaders_dir + "color.frag")
-
+    
     def __init__(self, shader, height, radius, slices):
         super().__init__(shader, height, radius, slices)
 
