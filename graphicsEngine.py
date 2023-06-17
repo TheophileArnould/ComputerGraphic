@@ -22,7 +22,6 @@ class GraphicsEngine:
         self.cube_mesh = CubeMesh()
         self.cube_sky_mesh = CubeSkyMesh()
 
-        self.textureBrick = Material("Images/brick.png")
         self.textureRock = Material("Images/rock.png")
         self.textureSky = Material("Images/sky.jpg")
         self.textureTarget = Material("Images/target.png")
@@ -220,7 +219,6 @@ class GraphicsEngine:
         self.cube_sky_mesh.destroy()
         self.textureRock.destroy()
         self.textureSky.destroy()
-        self.textureBrick.destroy()
         self.textureTarget.destroy()
         self.textureCubeSky.destroy()
         glDeleteProgram(self.shader)
