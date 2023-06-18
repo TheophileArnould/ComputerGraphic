@@ -2,7 +2,6 @@ from player import Player
 from shape.cube import Cube
 import numpy as np
 from textureAndLight.light import Light
-from shape.sphere import Sphere
 import random as rd
 
 
