@@ -100,6 +100,12 @@ class App:
         if glfw.get_key(self.window, GLFW_CONSTANTS.GLFW_KEY_SPACE) == GLFW_CONSTANTS.GLFW_PRESS:
             self.scene.addArrow()#have position and direction
 
+        if glfw.get_key(self.window, GLFW_CONSTANTS.GLFW_KEY_UP) == GLFW_CONSTANTS.GLFW_PRESS:
+            self.handleUpArrow()  # Appeler la méthode handleUpArrow lorsque la flèche du haut est pressée
+
+        if glfw.get_key(self.window, GLFW_CONSTANTS.GLFW_KEY_DOWN) == GLFW_CONSTANTS.GLFW_PRESS:
+            self.handleDownArrow()  # Appeler la méthode handleDownArrow lorsque la flèche du bas est pressée
+
         
         if combo > 0:
             if combo == 3:
@@ -147,6 +153,13 @@ class App:
             self.numFrames = -1
             self.frameTime = float(1000.0 / max(1,framerate))
         self.numFrames += 1
+
+    def handleUpArrow(self):
+        self.scene.changeNightMode("up")  # Appeler la méthode changeNightMode avec la direction "up"
+
+    def handleDownArrow(self):
+       self.scene.changeNightMode("down")  # Appeler la méthode changeNightMode avec la direction "down"
+
 
     def quit(self):
         

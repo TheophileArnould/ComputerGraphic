@@ -62,6 +62,8 @@ class Scene:
             )
         )
 
+        self.night_mode = False
+
 
         
     def update(self,speed):
@@ -102,3 +104,38 @@ class Scene:
                 if(arrow.position[2]> 0.8 and np.linalg.norm(target.position-arrow.position) > 0.8 ):
                     arrow.position += arrow.direction * speed
                     arrow.direction[2] -= 0.01   #Gravité donc accélération vers le bas
+
+    
+    def update(self, speed):
+        self.moveArrows(speed)
+        if self.night_mode:
+            self.turnOnNightMode()
+        else:
+            self.turnOffNightMode()
+
+    def turnOnNightMode(self):
+        # Modifier les paramètres d'éclairage pour le mode nuit
+        for light in self.lights:
+            light.intensity = 0.1  # Réduire l'intensité lumineuse
+            light.color = [0.2, 0.2, 0.4]  # Changer la couleur de la lumière en bleu foncé
+        # Modifier la couleur du ciel
+        for cube in self.sky:
+            cube.color = [0, 0, 0.2]  # Changer la couleur du cube du ciel en bleu foncé
+
+    def turnOffNightMode(self):
+        # Restaurer les paramètres d'éclairage par défaut
+        for light in self.lights:
+            light.intensity = 1.0  # Rétablir l'intensité lumineuse par défaut
+            light.color = [1, 1, 1]  # Rétablir la couleur de la lumière par défaut
+        # Restaurer la couleur du ciel par défaut
+        for cube in self.sky:
+            cube.color = [0.5, 0.7, 1]  # Rétablir la couleur du cube du ciel en bleu clair
+
+    def changeNightMode(self, direction):
+        if direction == "up":
+            self.night_mode = False  # Se rapprocher de jour
+        elif direction == "down":
+            self.night_mode = True  # Se rapprocher de la nuit
+
+
+
