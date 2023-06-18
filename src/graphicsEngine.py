@@ -1,6 +1,6 @@
-from cubeMesh import CubeMesh
-from cubeSkyMesh import CubeSkyMesh
-from sphereMesh import SphereMesh
+from mesh.cubeMesh import CubeMesh
+from mesh.cubeSkyMesh import CubeSkyMesh
+from mesh.sphereMesh import SphereMesh
 from material import Material
 
 import pathlib
