@@ -25,7 +25,8 @@ class GraphicsEngine:
         self.textureRock = Material("Images/rock.png")
         self.textureSky = Material("Images/sky.jpg")
         self.textureTarget = Material("Images/target.png")
-        self.textureCubeSky = Material("Images/CubeMapRotateRevers.png")
+        self.textureCubeSkyDay = Material("Images/CubeMapRotateRevers.png")
+        self.textureCubeSkyNight = Material("Images/nightSky.jpg")
 
         glClearColor(0.1,0.1,0.1,1)
         glEnable(GL_DEPTH_TEST)
@@ -116,7 +117,10 @@ class GraphicsEngine:
                 )
             )
             CubeSkyMesh()
-            self.textureCubeSky.use()
+            if(scene.night_mode):
+                self.textureCubeSkyDay.use()
+            else:
+                self.textureCubeSkyNight.use()
             glUniformMatrix4fv(self.modelMatrixLocation, 1, GL_FALSE, model_transform)
             glDrawArrays(GL_TRIANGLES, 0, self.cube_sky_mesh.vertex_count)
 
@@ -163,11 +167,16 @@ class GraphicsEngine:
             glUniformMatrix4fv(self.modelMatrixLocation, 1, GL_FALSE, model_transform)
             glDrawArrays(GL_TRIANGLES, 0, self.cube_mesh.vertex_count)
 
-
-        for i,light in enumerate(scene.lights):
-            glUniform3fv(self.lightLocation["position"][i], 1, light.position)
-            glUniform3fv(self.lightLocation["color"][i], 1, light.color)
-            glUniform1f(self.lightLocation["strength"][i], light.strength)
+        if(scene.night_mode):
+            for i,light in enumerate(scene.dayLights):
+                glUniform3fv(self.lightLocation["position"][i], 1, light.position)
+                glUniform3fv(self.lightLocation["color"][i], 1, light.color)
+                glUniform1f(self.lightLocation["strength"][i], light.strength)
+        else:
+            for i,light in enumerate(scene.nightLights):
+                glUniform3fv(self.lightLocation["position"][i], 1, light.position)
+                glUniform3fv(self.lightLocation["color"][i], 1, light.color)
+                glUniform1f(self.lightLocation["strength"][i], light.strength)
 
         for arrow in scene.arrows:
             model_transform = pyrr.matrix44.create_identity(dtype=np.float32)
@@ -220,5 +229,7 @@ class GraphicsEngine:
         self.textureRock.destroy()
         self.textureSky.destroy()
         self.textureTarget.destroy()
-        self.textureCubeSky.destroy()
+        self.textureCubeSkyNight.destroy()
+        self.textureCubeSkyDay.destroy()
+
         glDeleteProgram(self.shader)
