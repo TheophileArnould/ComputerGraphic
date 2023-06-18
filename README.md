@@ -10,7 +10,7 @@ RUN THE PROJECT : python src\game.py, click esc to exit run
 
 ## I - Project presentation: 
 
-During this project wit developped a dart game using : Python with OpenGL and GLFW libraries
+During this project we developped a dart game using : Python with OpenGL and GLFW libraries
 
 <img src="https://github.com/philehteo/ComputerGraphic/assets/128708157/c3df8af5-1255-4f7f-933e-65b6b1a48e32" alt="drawing" width="200" height="200"/>
 <img src="https://github.com/philehteo/ComputerGraphic/assets/128708157/5e3791d8-fe9a-4aaa-b81c-641f0559d409" alt="drawing" width="250" height="200"/>
