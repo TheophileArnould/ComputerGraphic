@@ -1,9 +1,8 @@
 from OpenGL.GL import *
 import numpy as np
+from shape.geometricShape import GeometricShape
 
-class Sphere:
+class Sphere(GeometricShape):
 
     def __init__(self, position, eulers):
-
-        self.position = np.array(position, dtype=np.float32)
-        self.eulers = np.array(eulers, dtype=np.float32)
+        super().__init__(position, eulers)
