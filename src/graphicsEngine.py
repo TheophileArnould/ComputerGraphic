@@ -1,6 +1,5 @@
 from mesh.cubeMesh import CubeMesh
 from mesh.cubeSkyMesh import CubeSkyMesh
-from mesh.sphereMesh import SphereMesh
 from textureAndLight.material import Material
 
 import pathlib
