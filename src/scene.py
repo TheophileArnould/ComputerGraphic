@@ -9,12 +9,6 @@ class Scene:
 
     def __init__(self):
 
-        '''
-            TO DO render target
-            TO DO render ground
-            TO DO render arrows
-        
-        '''
         
         self.sky = []
 
