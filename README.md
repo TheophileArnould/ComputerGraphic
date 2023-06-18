@@ -18,15 +18,7 @@ RUN THE PROJECT : python src\game.py, click esc to exit run
 
 I - Project presentation: 
 Through this project we have developed a dart board. To do this we used the Python language.
-
-
-
 We used the GLFW library which offers a set of routines for managing OpenGL windows and OpenGL for graphics support.
-
-
-
-
-
 
 1 - All features
 
@@ -42,18 +34,19 @@ Shoot arrows (arrows are cubes)
 Pressing space will shoot arrows. These arrows stick to the target, if they hit it. They also remain on the ground surface:
 
 
+![tireSurCibleEtSol](https://github.com/philehteo/ComputerGraphic/assets/126386321/443dfc4e-cd71-43f2-8c15-f012d4fe6d11)
 
 
 decrease/increase brightness
 
 You can toggle between two brightness modes by clicking the up or down arrow. The top one increases the brightness, the bottom one decreases it:
 
-
-
-low and high brightness
+![faibleLumi](https://github.com/philehteo/ComputerGraphic/assets/126386321/aa24f717-eccc-426a-bb25-c01d3f4f6be1)
+![forteLuminosité](https://github.com/philehteo/ComputerGraphic/assets/126386321/1281749b-f363-4ca6-bee3-4994bf7d6371)
 
 
 2 - Code explanation
+![import ](https://github.com/philehteo/ComputerGraphic/assets/126386321/5911b9cf-8a0a-4f8e-9236-328c9e00246c)
 
 
 Here is a short summary of the imports and therefore the way each class uses and/or is used by the others.
