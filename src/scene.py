@@ -65,19 +65,19 @@ class Scene:
 
         self.nightLights.append(Light(
             [30,-30,25],
-            [0,6,0.8,0.8],
-            0.5
+            [0.15,0.05,0.5],
+            10
         )
         )
         self.nightLights.append(Light(
-            [15,-15,8],
-            [0,0.6,1],
-            10
+            [15,-15,15],
+            [0.15,0.05,0.5],
+            20
             )
         )
         
 
-        self.night_mode = False
+        self.night_mode = True
 
 
         
@@ -126,9 +126,9 @@ class Scene:
 
     def changeNightMode(self, direction):
         if direction == "up":
-            self.night_mode = False  # Se rapprocher de jour
+            self.night_mode = True  # Se rapprocher de jour
         elif direction == "down":
-            self.night_mode = True  # Se rapprocher de la nuit
+            self.night_mode = False  # Se rapprocher de la nuit
 
 
 

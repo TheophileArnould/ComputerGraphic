@@ -102,6 +102,7 @@ class GraphicsEngine:
                     dtype=np.float32
                 )
             )
+            
             model_transform = pyrr.matrix44.multiply(
                 m1=model_transform,
                 m2=pyrr.matrix44.create_from_x_rotation(
@@ -119,8 +120,10 @@ class GraphicsEngine:
             CubeSkyMesh()
             if(scene.night_mode):
                 self.textureCubeSkyDay.use()
+                glUniform1f(glGetUniformLocation(self.shader, "ambientStrenght"), 0.9)
             else:
                 self.textureCubeSkyNight.use()
+                glUniform1f(glGetUniformLocation(self.shader, "ambientStrenght"), 0.4)
             glUniformMatrix4fv(self.modelMatrixLocation, 1, GL_FALSE, model_transform)
             glDrawArrays(GL_TRIANGLES, 0, self.cube_sky_mesh.vertex_count)
 
