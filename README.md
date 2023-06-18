@@ -29,13 +29,8 @@ This project is a simple dart game. You spaw on a world with a target in the cen
  - To close the window click escape key
 ```
 
-#### First, we can move with the classic keys: q, z, s, d
 
-z to go forward, s to go back, q to go left and d for right. Additionally, the mouse cursor indicates where the character is looking.
-
-#### Shoot arrows (arrows are cubes)
-
-Pressing space will shoot arrows. These arrows stick to the target, if they hit it. They also remain on the ground surface:
+These arrows stick to the target, if they hit it. They also remain on the ground surface:
 
 <img width="1268" alt="image" src="https://github.com/philehteo/ComputerGraphic/assets/128708157/162c6cc5-cb9e-4b58-b9f6-2c4fb8ff8205">
 
