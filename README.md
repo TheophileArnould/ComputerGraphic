@@ -37,8 +37,7 @@ z to go forward, s to go back, q to go left and d for right. Additionally, the m
 
 Pressing space will shoot arrows. These arrows stick to the target, if they hit it. They also remain on the ground surface:
 
-![tireSurCibleEtSol](https://github.com/philehteo/ComputerGraphic/assets/126386321/443dfc4e-cd71-43f2-8c15-f012d4fe6d11)
-
+<img width="1268" alt="image" src="https://github.com/philehteo/ComputerGraphic/assets/128708157/162c6cc5-cb9e-4b58-b9f6-2c4fb8ff8205">
 
 #### Night mode 
 
