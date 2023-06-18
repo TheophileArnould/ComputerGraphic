@@ -57,6 +57,7 @@ Some other details could be :
 - having a round target with a texture on a cylinder shape
 - change the direction of the dart during fall
 - have better light distribution
+- find best ditance for sky box for best result and make it un touchable to have real sky effect
 
 ### 3 - Code explanation
 ![import ](https://github.com/philehteo/ComputerGraphic/assets/126386321/5911b9cf-8a0a-4f8e-9236-328c9e00246c)
