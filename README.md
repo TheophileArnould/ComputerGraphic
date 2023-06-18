@@ -50,8 +50,16 @@ Day :
 Night :
 <img width="1440" alt="Capture d’écran 2023-06-18 à 21 31 55" src="https://github.com/philehteo/ComputerGraphic/assets/128708157/145d3aa9-2209-48ee-8c88-cdd2bcef13b2">
 
+### 2 - Possible improvment
 
-### 2 - Code explanation
+For this project there could be a few improvements in the details. First we could have separate more accuratly the different classes. For exemple we could have write the function moveplayer in the player class to have a better separation of classes.
+
+Some other details could be :
+- having a round target with a texture on a cylinder shape
+- change the direction of the dart during fall
+- have better light distribution
+
+### 3 - Code explanation
 ![import ](https://github.com/philehteo/ComputerGraphic/assets/126386321/5911b9cf-8a0a-4f8e-9236-328c9e00246c)
 
 
@@ -69,8 +77,6 @@ For the Player class, we find the position as an attribute. There are also theta
 The Light class is composed of position, color and strength (intensity) attributes. Thos will be given as uniforme for texture and sheder rendering
 
 Once all of these classes have been written, we can move on to the Scene. As we saw during the graphic on the import, this Scene class includes everything related to the visual. Thus, these attributes are the sky, the target, the arrows, the player and the light. Methods are used to change the visual state of objects, such as move_player which changes the location of the player along the x and y axes. There is also, moveArrows which allows to move the arrows and finally the methods allowing to lower the light intensity.
-
-A possible upgrade could have been to store the state changement of the scene attribut in the class (for exemple moveplayer in the player class) to have a better separation of classes.
 
 #### GraphicsEngine
 
